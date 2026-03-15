@@ -4,97 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Board of Directors — Growing America's Youth</title>
-  <meta name="description" content="Meet the board of directors of Growing America's Youth, a Baltimore City 501(c)(3) nonprofit." />
+  <meta name="description" content="Meet the board of directors and team of Growing America's Youth, a Baltimore City 501(c)(3) nonprofit." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .page-hero {
-      background: var(--green-dark);
-      padding: 8rem 1.5rem 4rem;
-      text-align: center;
-    }
+    .page-hero { background: var(--green-dark); padding: 8rem 1.5rem 4rem; text-align: center; }
     .page-hero h1 { color: #fff; font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
     .page-hero p { color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto; font-size: 1.1rem; }
-
     .board-section { padding: 5rem 0; background: var(--cream); }
-
-    .board-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .board-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    .board-section h2 { color: var(--green-dark); margin-bottom: 0.5rem; }
+    .board-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+    .board-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
     .board-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-
-    .board-card__avatar {
-      width: 100%;
-      aspect-ratio: 1;
-      background: var(--green-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-    }
+    .board-card__avatar { width: 100%; aspect-ratio: 1; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 5rem; }
     .board-card__body { padding: 1.5rem; }
-    .board-card__name {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--green-dark);
-      margin-bottom: 0.2rem;
-    }
-    .board-card__title {
-      font-family: var(--font-head);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--green-bright);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.75rem;
-    }
+    .board-card__name { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--green-dark); margin-bottom: 0.2rem; }
+    .board-card__title { font-family: var(--font-head); font-size: 0.8rem; font-weight: 600; color: var(--green-bright); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
     .board-card__bio { font-size: 0.9rem; color: var(--text-muted); }
-
-    .join-board {
-      background: var(--green-dark);
-      padding: 5rem 0;
-      text-align: center;
-    }
+    .team-section { padding: 5rem 0; background: var(--white); }
+    .team-section h2 { color: var(--green-dark); margin-bottom: 0.5rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .team-card { background: var(--cream); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; border: 1px solid var(--border); }
+    .team-card__avatar { width: 80px; height: 80px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1rem; }
+    .team-card__name { font-family: var(--font-head); font-weight: 700; color: var(--green-dark); margin-bottom: 0.2rem; }
+    .team-card__title { font-family: var(--font-head); font-size: 0.78rem; font-weight: 600; color: var(--green-bright); text-transform: uppercase; letter-spacing: 0.08em; }
+    .join-board { background: var(--green-dark); padding: 5rem 0; text-align: center; }
     .join-board h2 { color: #fff; margin-bottom: 1rem; }
     .join-board p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 2rem; }
-
-    .placeholder-notice {
-      background: var(--yellow);
-      border-radius: var(--radius);
-      padding: 1rem 1.5rem;
-      margin-bottom: 2rem;
-      font-family: var(--font-head);
-      font-size: 0.9rem;
-      color: var(--earth);
-    }
-
-    @media (max-width: 900px) { .board-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .board-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .board-grid { grid-template-columns: 1fr 1fr; } .team-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .board-grid { grid-template-columns: 1fr; } .team-grid { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
-
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">🌱 Growing America's Youth</a>
       <ul class="nav__links">
         <li><a href="index.html#programs">Programs</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="board.html">Board</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="board.html">Board & Team</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="apply.html" class="btn btn--nav">Apply Now</a></li>
       </ul>
@@ -105,7 +56,8 @@
     <div class="nav__mobile" id="mobile-menu">
       <a href="index.html#programs">Programs</a>
       <a href="events.html">Events</a>
-      <a href="board.html">Board</a>
+      <a href="news.html">News</a>
+      <a href="board.html">Board & Team</a>
       <a href="index.html#about">About</a>
       <a href="apply.html" class="btn btn--green">Apply Now</a>
     </div>
@@ -113,70 +65,105 @@
 
   <div class="page-hero">
     <span class="eyebrow">Leadership</span>
-    <h1>Board of Directors</h1>
+    <h1>Board of Directors &amp; Team</h1>
     <p>The people committed to making Growing America's Youth a lasting force for Baltimore's youth.</p>
   </div>
 
+  <!-- BOARD -->
   <section class="board-section">
     <div class="container">
-      <div class="placeholder-notice">
-        ⚠️ <strong>Admin note:</strong> Replace placeholder profiles below with real board member names, titles, photos, and bios. Remove this notice when live.
-      </div>
-
+      <span class="eyebrow">Governance</span>
+      <h2>Board of Directors</h2>
       <div class="board-grid">
 
         <div class="board-card">
           <div class="board-card__avatar">👤</div>
           <div class="board-card__body">
-            <div class="board-card__name">Board Member Name</div>
+            <div class="board-card__name">Chekesha Catlin</div>
             <div class="board-card__title">Board Chair</div>
-            <p class="board-card__bio">Brief bio — background, connection to the mission, professional role, and why they serve on the board. 2–3 sentences max.</p>
+            <p class="board-card__bio">Leading the board with a commitment to youth empowerment and community development in Baltimore City.</p>
           </div>
         </div>
 
         <div class="board-card">
           <div class="board-card__avatar">👤</div>
           <div class="board-card__body">
-            <div class="board-card__name">Board Member Name</div>
+            <div class="board-card__name">Kia Williams</div>
             <div class="board-card__title">Vice Chair</div>
-            <p class="board-card__bio">Brief bio — background, connection to the mission, professional role, and why they serve on the board. 2–3 sentences max.</p>
+            <p class="board-card__bio">Supporting strategic direction and board operations, with a passion for expanding access to opportunities for Baltimore youth.</p>
           </div>
         </div>
 
         <div class="board-card">
           <div class="board-card__avatar">👤</div>
           <div class="board-card__body">
-            <div class="board-card__name">Board Member Name</div>
+            <div class="board-card__name">Tenea Allen</div>
             <div class="board-card__title">Treasurer</div>
-            <p class="board-card__bio">Brief bio — background, connection to the mission, professional role, and why they serve on the board. 2–3 sentences max.</p>
+            <p class="board-card__bio">Overseeing the financial health of the organization to ensure every dollar serves Baltimore's young people.</p>
           </div>
         </div>
 
         <div class="board-card">
           <div class="board-card__avatar">👤</div>
           <div class="board-card__body">
-            <div class="board-card__name">Board Member Name</div>
-            <div class="board-card__title">Secretary</div>
-            <p class="board-card__bio">Brief bio — background, connection to the mission, professional role, and why they serve on the board. 2–3 sentences max.</p>
+            <div class="board-card__name">Tenea Reddick</div>
+            <div class="board-card__title">Board Secretary</div>
+            <p class="board-card__bio">Keeping the organization accountable, organized, and mission-focused through strong governance and record-keeping.</p>
           </div>
         </div>
 
         <div class="board-card">
           <div class="board-card__avatar">👤</div>
           <div class="board-card__body">
-            <div class="board-card__name">Board Member Name</div>
-            <div class="board-card__title">Board Member</div>
-            <p class="board-card__bio">Brief bio — background, connection to the mission, professional role, and why they serve on the board. 2–3 sentences max.</p>
+            <div class="board-card__name">Dr. Cassandra Vaughn</div>
+            <div class="board-card__title">Spokesperson & Board Member</div>
+            <p class="board-card__bio">Amplifying the mission of Growing America's Youth through community outreach, advocacy, and public representation.</p>
           </div>
         </div>
 
         <div class="board-card">
           <div class="board-card__avatar">👤</div>
           <div class="board-card__body">
-            <div class="board-card__name">Board Member Name</div>
-            <div class="board-card__title">Board Member</div>
-            <p class="board-card__bio">Brief bio — background, connection to the mission, professional role, and why they serve on the board. 2–3 sentences max.</p>
+            <div class="board-card__name">Michele Josey</div>
+            <div class="board-card__title">President / CEO</div>
+            <p class="board-card__bio">Founder and driving force behind Growing America's Youth. Michele built the organization from the ground up to serve Baltimore youth through hydroponics, STEM, and life skills since 2018.</p>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section">
+    <div class="container">
+      <span class="eyebrow">Staff</span>
+      <h2>Meet the Team</h2>
+      <p class="section-sub">The people on the ground making programs happen every day.</p>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-card__avatar">👤</div>
+          <div class="team-card__name">Michele Josey</div>
+          <div class="team-card__title">President</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card__avatar">👤</div>
+          <div class="team-card__name">Louis Josey</div>
+          <div class="team-card__title">VP of Operations</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card__avatar">👤</div>
+          <div class="team-card__name">Symone Thomas</div>
+          <div class="team-card__title">Culinary Instructor</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card__avatar">👤</div>
+          <div class="team-card__name">Sharon Akins</div>
+          <div class="team-card__title">Executive Assistant</div>
         </div>
 
       </div>
@@ -188,7 +175,7 @@
       <span class="eyebrow" style="color:var(--green-bright);">Get involved</span>
       <h2>Interested in joining our board?</h2>
       <p>We're always looking for passionate, mission-aligned people who want to help shape the future of Growing America's Youth.</p>
-      <a href="mailto:info@growingamericasyouth.org?subject=Board Interest" class="btn btn--green btn--lg">Reach Out</a>
+      <a href="mailto:mjosey@growingamericasyouth.org?subject=Board Interest" class="btn btn--green btn--lg">Reach Out</a>
     </div>
   </section>
 
@@ -202,8 +189,8 @@
         <div class="footer__links">
           <a href="index.html#programs">Programs</a>
           <a href="events.html">Events</a>
-          <a href="board.html">Board</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="news.html">News</a>
+          <a href="board.html">Board & Team</a>
         </div>
       </div>
       <div class="footer__bottom">
