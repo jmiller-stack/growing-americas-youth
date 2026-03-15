@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — Growing America's Youth</title>
+  <meta name="description" content="Upcoming events, programs, and community gatherings from Growing America's Youth in Baltimore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero {
+      background: var(--green-dark);
+      padding: 8rem 1.5rem 4rem;
+      text-align: center;
+    }
+    .page-hero h1 { color: #fff; font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+    .page-hero p { color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto; font-size: 1.1rem; }
+
+    .events-section { padding: 5rem 0; background: var(--cream); }
+    .events-section h2 { color: var(--green-dark); margin-bottom: 0.5rem; }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .event-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.75rem 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .event-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    .event-card--featured {
+      border-color: var(--green-bright);
+      background: var(--green-light);
+    }
+
+    .event-date {
+      text-align: center;
+      background: var(--green-dark);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 0.75rem 0.5rem;
+      flex-shrink: 0;
+    }
+    .event-date__month {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green-bright);
+      display: block;
+    }
+    .event-date__day {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+    }
+    .event-date__year {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      display: block;
+    }
+
+    .event-info { flex: 1; min-width: 0; }
+    .event-tag {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      background: rgba(82,183,136,0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.4rem;
+    }
+    .event-card--featured .event-tag { background: rgba(27,67,50,0.1); }
+    .event-info h3 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      margin-bottom: 0.4rem;
+    }
+    .event-info p { font-size: 0.9rem; margin: 0; }
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      font-family: var(--font-head);
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .event-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+    .event-action { flex-shrink: 0; }
+
+    .no-events {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+    .no-events p { max-width: 400px; margin: 1rem auto 0; }
+
+    .past-events { padding: 4rem 0 5rem; background: var(--white); }
+    .past-events h2 { color: var(--green-dark); margin-bottom: 2rem; }
+    .past-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .past-card {
+      border-radius: var(--radius);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    .past-card__date {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .past-card h4 { color: var(--green-dark); font-size: 1rem; margin-bottom: 0.4rem; }
+    .past-card p { font-size: 0.85rem; margin: 0; }
+
+    .notify-section {
+      background: var(--yellow);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .notify-section h2 { color: var(--green-dark); margin-bottom: 0.75rem; }
+    .notify-section p { color: var(--earth); max-width: 480px; margin: 0 auto 2rem; }
+    .notify-form {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .notify-form input {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--green-dark);
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      background: #fff;
+    }
+    .notify-form input:focus { outline: none; border-color: var(--green-mid); }
+
+    .placeholder-notice {
+      background: rgba(255,209,102,0.4);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      color: var(--earth);
+    }
+
+    @media (max-width: 768px) {
+      .event-card { grid-template-columns: 80px 1fr; }
+      .event-action { grid-column: 2; }
+      .past-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .event-card { grid-template-columns: 1fr; gap: 1rem; }
+      .event-date { width: 80px; }
+      .past-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">🌱 Growing America's Youth</a>
+      <ul class="nav__links">
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="board.html">Board</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="apply.html" class="btn btn--nav">Apply Now</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu">
+      <a href="index.html#programs">Programs</a>
+      <a href="events.html">Events</a>
+      <a href="board.html">Board</a>
+      <a href="index.html#about">About</a>
+      <a href="apply.html" class="btn btn--green">Apply Now</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">What's happening</span>
+    <h1>Events & Programs</h1>
+    <p>Workshops, open houses, harvest days, graduation ceremonies — this is where it all happens.</p>
+  </div>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="events-section">
+    <div class="container">
+      <span class="eyebrow">Coming up</span>
+      <h2>Upcoming Events</h2>
+
+      <div class="placeholder-notice">
+        ⚠️ <strong>Admin note:</strong> Replace the placeholder events below with real dates, locations, and descriptions. Add or remove cards as needed.
+      </div>
+
+      <div class="events-list">
+
+        <!-- FEATURED EVENT -->
+        <div class="event-card event-card--featured">
+          <div class="event-date">
+            <span class="event-date__month">Jun</span>
+            <span class="event-date__day">09</span>
+            <span class="event-date__year">2026</span>
+          </div>
+          <div class="event-info">
+            <span class="event-tag">🌟 Featured · Summer Program</span>
+            <h3>Summer Youth Program 2026 — Kickoff Day</h3>
+            <p>The official start of our 6-week summer cohort. Meet your cohort, tour the hydroponic lab, get your grow kit, and plant your first seeds. Family members welcome.</p>
+            <div class="event-meta">
+              <span>🕙 10:00 AM – 1:00 PM</span>
+              <span>📍 Baltimore City — location TBA</span>
+              <span>👥 Open to enrolled participants</span>
+            </div>
+          </div>
+          <div class="event-action">
+            <a href="apply.html" class="btn btn--green">Apply to Join →</a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">
+            <span class="event-date__month">Apr</span>
+            <span class="event-date__day">19</span>
+            <span class="event-date__year">2026</span>
+          </div>
+          <div class="event-info">
+            <span class="event-tag">Open House</span>
+            <h3>Spring Open House — Come See What We Grow</h3>
+            <p>Tour our hydroponic setup, meet the team, taste produce we've grown, and learn how to get involved. All ages welcome — bring your family.</p>
+            <div class="event-meta">
+              <span>🕑 2:00 PM – 5:00 PM</span>
+              <span>📍 Baltimore City — location TBA</span>
+              <span>🆓 Free, no registration required</span>
+            </div>
+          </div>
+          <div class="event-action">
+            <a href="mailto:info@growingamericasyouth.org?subject=Open House RSVP" class="btn btn--outline">RSVP</a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">
+            <span class="event-date__month">May</span>
+            <span class="event-date__day">03</span>
+            <span class="event-date__year">2026</span>
+          </div>
+          <div class="event-info">
+            <span class="event-tag">Workshop</span>
+            <h3>Intro to Hydroponics — Free Community Workshop</h3>
+            <p>A hands-on 2-hour workshop introducing hydroponics to anyone curious. You'll set up a small system, learn the basics, and leave with resources to start growing at home.</p>
+            <div class="event-meta">
+              <span>🕚 11:00 AM – 1:00 PM</span>
+              <span>📍 Baltimore City — location TBA</span>
+              <span>👤 Ages 13+ welcome</span>
+            </div>
+          </div>
+          <div class="event-action">
+            <a href="mailto:info@growingamericasyouth.org?subject=Workshop Registration" class="btn btn--outline">Register</a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">
+            <span class="event-date__month">Jul</span>
+            <span class="event-date__day">18</span>
+            <span class="event-date__year">2026</span>
+          </div>
+          <div class="event-info">
+            <span class="event-tag">🎓 Graduation</span>
+            <h3>Summer 2026 Cohort Graduation & Harvest Dinner</h3>
+            <p>Celebrating the end of our summer cohort. Participants present their grow portfolios, receive certificates, and share a meal cooked from produce they grew themselves. Families invited.</p>
+            <div class="event-meta">
+              <span>🕕 5:00 PM – 8:00 PM</span>
+              <span>📍 Baltimore City — location TBA</span>
+              <span>👨‍👩‍👧 Families welcome</span>
+            </div>
+          </div>
+          <div class="event-action">
+            <a href="mailto:info@growingamericasyouth.org?subject=Graduation RSVP" class="btn btn--outline">RSVP</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS -->
+  <section class="past-events">
+    <div class="container">
+      <span class="eyebrow">Looking back</span>
+      <h2>Past Events</h2>
+      <div class="past-grid">
+
+        <div class="past-card">
+          <div class="past-card__date">Summer 2025</div>
+          <h4>Pumpkin Harvest 2025 — Summer Youth Program</h4>
+          <p>20 youth across Baltimore City completed our 6-week summer cohort, growing produce weekly and earning ServSafe certification.</p>
+        </div>
+
+        <div class="past-card">
+          <div class="past-card__date">Spring 2025</div>
+          <h4>Community Open House</h4>
+          <p>Neighbors, families, and community partners toured our hydroponic setup and learned about our programs firsthand.</p>
+        </div>
+
+        <div class="past-card">
+          <div class="past-card__date">Fall 2024</div>
+          <h4>ServSafe Certification Session</h4>
+          <p>Participants ages 18+ completed the ServSafe Manager Certification program, earning Maryland-recognized credentials.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY -->
+  <section class="notify-section">
+    <div class="container">
+      <h2>Don't miss the next one.</h2>
+      <p>Drop your email and we'll let you know when new events are announced.</p>
+      <form class="notify-form" onsubmit="handleNotify(event)">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit" class="btn btn--green">Notify Me</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <strong>🌱 Growing America's Youth</strong>
+          <p>A 501(c)(3) nonprofit organization · Baltimore City, Maryland · Est. 2018</p>
+        </div>
+        <div class="footer__links">
+          <a href="index.html#programs">Programs</a>
+          <a href="events.html">Events</a>
+          <a href="board.html">Board</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Growing America's Youth Inc. All rights reserved.</p>
+        <p><em>"If you can plant a seed, you'll never be hungry."</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+    function handleNotify(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✅ You\'re on the list!';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
