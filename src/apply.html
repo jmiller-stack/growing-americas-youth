@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply — Growing America's Youth</title>
+  <meta name="description" content="Apply to Growing America's Youth — free programs for Baltimore youth ages 13–24." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .apply-page {
+      min-height: 100vh;
+      padding: 8rem 1.5rem 4rem;
+      background: var(--cream);
+    }
+    .apply-page__inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .apply-page h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+    }
+    .apply-page .lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .form-group label .req { color: var(--green-bright); margin-left: 2px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--green-bright);
+      box-shadow: 0 0 0 3px rgba(82,183,136,0.15);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select { cursor: pointer; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+    .form-submit {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .form-submit .btn { width: 100%; justify-content: center; }
+    .form-privacy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .success-msg {
+      display: none;
+      background: var(--green-light);
+      border: 1.5px solid var(--green-bright);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .success-msg h2 { color: var(--green-dark); margin-bottom: 0.75rem; }
+    .success-msg p { max-width: 400px; margin: 0 auto 1.5rem; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .checkbox-item { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+    .checkbox-item input[type=checkbox] {
+      width: 18px; height: 18px;
+      accent-color: var(--green-mid);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .checkbox-item span { font-size: 0.95rem; color: var(--text); }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">🌱 Growing America's Youth</a>
+      <ul class="nav__links">
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="index.html#impact">Impact</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="apply.html" class="btn btn--nav">Apply Now</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu">
+      <a href="index.html#programs">Programs</a>
+      <a href="index.html#impact">Impact</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="apply.html" class="btn btn--green">Apply Now</a>
+    </div>
+  </nav>
+
+  <div class="apply-page">
+    <div class="apply-page__inner">
+      <span class="eyebrow">Program Application</span>
+      <h1>Let's grow something real together.</h1>
+      <p class="lead">
+        Fill out this short form — it takes under 5 minutes. We'll follow up within 48 hours.
+        Programs are <strong>100% free</strong>.
+      </p>
+
+      <!-- FORM -->
+      <div class="form-card" id="form-card">
+        <form id="apply-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" name="first_name" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" name="last_name" placeholder="Last name" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Age <span class="req">*</span></label>
+              <select name="age" required>
+                <option value="" disabled selected>Select age</option>
+                <option>13</option><option>14</option><option>15</option>
+                <option>16</option><option>17</option><option>18</option>
+                <option>19</option><option>20</option><option>21</option>
+                <option>22</option><option>23</option><option>24</option>
+                <option>25+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Phone Number <span class="req">*</span></label>
+              <input type="tel" name="phone" placeholder="(410) 555-0100" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="your@email.com" />
+            <p class="form-hint">Optional — we'll use your phone number if no email provided.</p>
+          </div>
+
+          <div class="form-group">
+            <label>What part of Baltimore are you from? <span class="req">*</span></label>
+            <input type="text" name="neighborhood" placeholder="e.g. West Baltimore, East Baltimore, Dundalk…" required />
+          </div>
+
+          <div class="form-group">
+            <label>Which program(s) are you interested in? <span class="req">*</span></label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="program" value="Summer Youth Program" />
+                <span>☀️ Summer Youth Program (6 weeks, $25/week stipend)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="program" value="Hydroponic Gardening" />
+                <span>🌿 Hydroponic Gardening</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="program" value="ServSafe Certification" />
+                <span>📋 ServSafe Food Safety Certification (ages 18+)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="program" value="STEM Skills" />
+                <span>🔬 STEM Skills</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="program" value="Life Skills & Career Development" />
+                <span>💼 Life Skills & Career Development</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>How did you hear about us?</label>
+            <select name="referral">
+              <option value="" disabled selected>Select one</option>
+              <option>Friend or family member</option>
+              <option>School or teacher</option>
+              <option>Social media</option>
+              <option>Reddit</option>
+              <option>Community organization</option>
+              <option>Flyer or poster</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Anything else you want us to know?</label>
+            <textarea name="notes" placeholder="Questions, special circumstances, or anything else…"></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn--green btn--lg">Submit Application →</button>
+            <p class="form-privacy">🔒 Your info stays private. We'll never share or sell it.</p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-msg" id="success-msg">
+        <div style="font-size:3rem; margin-bottom:1rem;">🌱</div>
+        <h2>You're in! We'll be in touch.</h2>
+        <p>
+          Thanks for applying. Someone from Growing America's Youth will reach out within
+          <strong>48 hours</strong> to talk next steps. Get ready to grow something real.
+        </p>
+        <a href="index.html" class="btn btn--green">← Back to Home</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+    // Form submission — sends to Formspree (free tier, no backend needed)
+    const form = document.getElementById('apply-form');
+    const formCard = document.getElementById('form-card');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic validation
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#EF4444';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+
+      // Check at least one program selected
+      const checked = form.querySelectorAll('input[name="program"]:checked');
+      if (checked.length === 0) {
+        valid = false;
+        form.querySelector('.checkbox-group').style.outline = '2px solid #EF4444';
+        form.querySelector('.checkbox-group').style.borderRadius = '8px';
+      }
+
+      if (!valid) return;
+
+      // Collect form data
+      const data = new FormData(form);
+      const programs = [...form.querySelectorAll('input[name="program"]:checked')].map(c => c.value);
+
+      // Submit to Formspree (replace FORM_ID once Mickey sets up account)
+      const FORMSPREE_ID = 'REPLACE_WITH_FORMSPREE_ID';
+
+      const submitBtn = form.querySelector('button[type=submit]');
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      if (FORMSPREE_ID === 'REPLACE_WITH_FORMSPREE_ID') {
+        // Dev mode — just show success
+        setTimeout(() => {
+          formCard.style.display = 'none';
+          successMsg.style.display = 'block';
+        }, 800);
+        return;
+      }
+
+      try {
+        const payload = {
+          first_name: data.get('first_name'),
+          last_name: data.get('last_name'),
+          age: data.get('age'),
+          phone: data.get('phone'),
+          email: data.get('email'),
+          neighborhood: data.get('neighborhood'),
+          programs: programs.join(', '),
+          referral: data.get('referral'),
+          notes: data.get('notes'),
+        };
+
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          formCard.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          submitBtn.textContent = 'Something went wrong — try again';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        submitBtn.textContent = 'Something went wrong — try again';
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
